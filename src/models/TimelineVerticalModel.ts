@@ -55,6 +55,7 @@ export interface VerticalItemModel extends VerticalModel {
   contentDetailsChildren?: React.ReactNode;
   iconChild?: React.ReactNode;
   index: number;
+  labels?: string[];
   media?: Media;
   onActive: (
     pointOffset: number,

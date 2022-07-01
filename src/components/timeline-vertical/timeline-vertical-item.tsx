@@ -28,6 +28,7 @@ const VerticalItem: React.FunctionComponent<VerticalItemModel> = (
     iconChild,
     hasFocus,
     id,
+    labels,
     media,
     onActive,
     onClick,
@@ -144,6 +145,7 @@ const VerticalItem: React.FunctionComponent<VerticalItemModel> = (
             detailedText={cardDetailedText}
             hasFocus={hasFocus}
             id={id}
+            labels={labels}
             media={media}
             onClick={onClick}
             onElapsed={onElapsed}

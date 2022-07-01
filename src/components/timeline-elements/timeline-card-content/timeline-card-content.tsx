@@ -33,6 +33,7 @@ const TimelineCardContent: React.FunctionComponent<TimelineContentModel> =
       content,
       detailedText,
       id,
+      labels,
       media,
       onShowMore,
       slideShowActive,
@@ -341,6 +342,39 @@ const TimelineCardContent: React.FunctionComponent<TimelineContentModel> =
             )}
           </TimelineContentDetailsWrapper>
 
+          {/* detailed text */}
+          <TimelineContentDetailsWrapper
+            aria-expanded={showMore}
+            className={contentDetailsClass}
+            customContent={!!customContent}
+            ref={detailsRef}
+            theme={theme}
+            useReadMore={useReadMore}
+            borderLess={borderLessCards}
+          >
+            {customContent ? (
+              <>{customContent}</>
+            ) : (
+              <TimelineContentDetails
+                className={showMore ? 'active' : ''}
+                ref={detailsRef}
+                theme={theme}
+              >
+                {Array.isArray(detailedText)
+                  ? detailedText.map((text, index) => (
+                      <TimelineSubContent
+                        key={index}
+                        fontSize={fontSizes?.cardText}
+                      >
+                        {text}
+                      </TimelineSubContent>
+                    ))
+                  : detailedText}
+              </TimelineContentDetails>
+            )}
+          </TimelineContentDetailsWrapper>
+
+
           {/* display the show more button for textual content */}
           {canShowReadMore && textContentLarge ? (
             <ShowMore
@@ -362,6 +396,36 @@ const TimelineCardContent: React.FunctionComponent<TimelineContentModel> =
               </ChevronIconWrapper>
             </ShowMore>
           ) : null}
+
+          {/* labels */}
+          <TimelineContentDetailsWrapper
+            aria-expanded={showMore}
+            className={contentDetailsClass}
+            customContent={!!customContent}
+            ref={detailsRef}
+            theme={theme}
+            useReadMore={useReadMore}
+            borderLess={borderLessCards}
+          >
+            
+              <TimelineContentDetails
+                className={showMore ? 'active' : ''}
+                ref={detailsRef}
+                theme={theme}
+              >
+                {Array.isArray(labels)
+                  ? labels.map((text, index) => (
+                      <TimelineSubContent
+                        key={index}
+                        fontSize={fontSizes?.cardText}
+                      >
+                        {text}
+                      </TimelineSubContent>
+                    ))
+                  : detailedText}
+              </TimelineContentDetails>
+          </TimelineContentDetailsWrapper>
+
 
           {canShowProgressBar && (
             <SlideShowProgressBar

@@ -15,6 +15,7 @@ export interface TimelineItemModel {
     cardSubtitle?: string;
     cardTitle?: string;
     id?: string;
+    labels?: string[];
     media?: Media;
     position?: string;
     title?: string;
